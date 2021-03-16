@@ -1,0 +1,31 @@
+{
+  "name": "upfiretoken",
+  "version": "1.0.0",
+  "description": "Repository for Upfire's new token and the token swap portal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UpfiringHQ/UpfireToken.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UpfiringHQ/UpfireToken/issues"
+  },
+  "homepage": "https://github.com/UpfiringHQ/UpfireToken#readme",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-etherscan": "^2.1.1",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "dotenv": "^8.2.0",
+    "ethers": "^5.0.32",
+    "hardhat": "^2.1.1",
+    "hardhat-contract-sizer": "^2.0.3"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.4.1"
+  }
+}
