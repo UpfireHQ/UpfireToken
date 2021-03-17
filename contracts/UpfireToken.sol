@@ -11,13 +11,13 @@ contract UpfireToken is Context, AccessControl, ERC20, ERC20Burnable, ERC20Cappe
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     // Setting hard cap to 100,000,000 UPF
-    constructor() ERC20("Upfire Token", "UPF") ERC20Capped(10**27) public {
+    constructor() ERC20("Upfire", "UPF") ERC20Capped(10**27) public {
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _setupRole(MINTER_ROLE, _msgSender());
     }
 
     function mint(address to, uint256 amount) public {
-        require(hasRole(MINTER_ROLE, _msgSender()), "UpfireToken: must have minter role to mint");
+        require(hasRole(MINTER_ROLE, _msgSender()), "Upfire: must have minter role to mint");
         _mint(to, amount);
     }
 
