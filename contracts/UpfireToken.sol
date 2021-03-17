@@ -5,13 +5,12 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/Context.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20Burnable.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20Capped.sol";
 
-contract UpfireToken is Context, AccessControl, ERC20, ERC20Burnable, ERC20Capped {
+contract UpfireToken is Context, AccessControl, ERC20, ERC20Burnable {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     // Setting hard cap to 100,000,000 UPR
-    constructor() ERC20("Upfire", "UPR") ERC20Capped(10**27) public {
+    constructor() ERC20("Upfire", "UPR") public {
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _setupRole(MINTER_ROLE, _msgSender());
     }
