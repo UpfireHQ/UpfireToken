@@ -4,11 +4,14 @@
   "description": "Repository for Upfire's new token and the token swap portal.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx hardhat test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/UpfiringHQ/UpfireToken.git"
+  },
+  "engines": {
+    "node": ">=15"
   },
   "author": "",
   "license": "ISC",
@@ -20,10 +23,12 @@
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^2.1.1",
     "@nomiclabs/hardhat-web3": "^2.0.0",
+    "chai": "^4.3.4",
     "dotenv": "^8.2.0",
     "ethers": "^5.0.32",
     "hardhat": "^2.1.1",
-    "hardhat-contract-sizer": "^2.0.3"
+    "hardhat-contract-sizer": "^2.0.3",
+    "keccak256": "^1.0.2"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^3.4.1"

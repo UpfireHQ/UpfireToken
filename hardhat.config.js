@@ -5,6 +5,7 @@ require("@nomiclabs/hardhat-ethers");
 require('hardhat-contract-sizer');
 require('@nomiclabs/hardhat-etherscan');
 require('./tasks/deployUpfireToken');
+require('./tasks/deployUpfireSwap');
 require('dotenv').config();
 
 const config = {
