@@ -14,7 +14,15 @@ const config = {
     runOnCompile: true,
     disambiguatePaths: false,
   },
-  solidity: "0.7.3",
+  solidity: {
+    version: "0.7.3",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 1000
+      }
+    }
+  },
   networks: {
     hardhat: {
       throwOnTransactionFailures: true,

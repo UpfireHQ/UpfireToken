@@ -6,7 +6,4 @@ task('deployUpfireToken', 'Deploys the UPF token')
     const token = await Token.deploy();
     await token.deployed();
     console.log(`Deployed at: ${token.address}`);
-
-    const cap = await token.cap();
-    console.log(`Cap is: ${cap.toString()}`);
   });
