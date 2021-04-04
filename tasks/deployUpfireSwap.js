@@ -2,7 +2,7 @@ require("@nomiclabs/hardhat-web3");
 
 task('deployUpfireSwap', 'Deploys the UPF token')
   .addParam('oldTokenAddress', 'Address of the old Upfiring token')
-  .addParam('newTokenAddres', 'Address of the new Upfire token')
+  .addParam('newTokenAddress', 'Address of the new Upfire token')
   .setAction(async ({ oldTokenAddress, newTokenAddress }) => {
     const UpfireSwap = await hre.ethers.getContractFactory('UpfireSwap');
     const upfireSwap = await UpfireSwap.deploy(oldTokenAddress, newTokenAddress);

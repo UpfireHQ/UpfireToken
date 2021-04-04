@@ -20,10 +20,6 @@ contract UpfireSwap is Ownable {
         rate = 10;
     }
 
-    function getSwapRate() public view returns (uint256) {
-        return rate;
-    }
-
     function setSwapRate(uint256 newRate) public onlyOwner {
         require(!rateFrozen, "SwapRate is frozen");
         require(newRate > 0, "SwapRate must more than 0");

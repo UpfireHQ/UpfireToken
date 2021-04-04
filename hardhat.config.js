@@ -31,7 +31,7 @@ const config = {
       throwOnCallFailures: true,
       allowUnlimitedContractSize: true,
       blockGasLimit: 0x1fffffffffffff,
-      gasPrice: parseInt(ethers.utils.parseUnits('271', 'gwei')),
+      gasPrice: parseInt(ethers.utils.parseUnits('150', 'gwei')),
     },
   }
 };
