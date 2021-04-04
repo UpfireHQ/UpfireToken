@@ -1,5 +1,6 @@
 const keccak256 = require('keccak256');
 const { expect } = require('chai');
+const { expectRevert } = require('@openzeppelin/test-helpers');
 
 describe('Swap', () => {
   it('should do the swap', async () => {
@@ -29,12 +30,17 @@ describe('Swap', () => {
     await swap.wait();
 
     expect((await oldUpfiringToken.balanceOf(accounts[0].address)).toString()).to.equal('20999999000000000000000000'); // -1 UFR
-    expect((await upfireToken.balanceOf(accounts[0].address)).toString()).to.equal('1000000000000000000'); // +1 UFR
+    expect((await upfireToken.balanceOf(accounts[0].address)).toString()).to.equal('10000000000000000000'); // +1 UFR
 
     const withdraw = await upfireSwap.withdrawUFR(accounts[1].address, '1000000000000000000');
     await withdraw.wait();
 
     expect((await oldUpfiringToken.balanceOf(accounts[1].address)).toString()).to.equal('1000000000000000000'); // 1 UFR
     expect((await oldUpfiringToken.balanceOf(upfireSwap.address)).toString()).to.equal('0');
+
+    const freezeSwap = await upfireSwap.freezeSwapRate();
+    await freezeSwap.wait();
+
+    expectRevert(upfireSwap.swap(swapAmount), 'SwapRate is frozen');
   });
 });

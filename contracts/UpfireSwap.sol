@@ -6,9 +6,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract UpfireSwap is Ownable {
-    uint256 private rate;
-    IERC20 private UFR;
-    UpfireToken private UPR;
+    bool public rateFrozen;
+    uint256 public rate;
+    IERC20 public UFR;
+    UpfireToken public UPR;
 
     event SwapRate(uint256 amount);
     event Swap(address account, uint256 input, uint256 output);
@@ -16,7 +17,7 @@ contract UpfireSwap is Ownable {
     constructor(IERC20 _UFR, UpfireToken _UPR) public {
         UFR = _UFR;
         UPR = _UPR;
-        rate = 1;
+        rate = 10;
     }
 
     function getSwapRate() public view returns (uint256) {
@@ -24,9 +25,14 @@ contract UpfireSwap is Ownable {
     }
 
     function setSwapRate(uint256 newRate) public onlyOwner {
-        require(newRate > 0, 'SwapRate must more than 0');
+        require(!rateFrozen, "SwapRate is frozen");
+        require(newRate > 0, "SwapRate must more than 0");
         rate = newRate;
         emit SwapRate(newRate);
+    }
+
+    function freezeSwapRate() public onlyOwner {
+        rateFrozen = true;
     }
 
     function swap(uint256 amount) public {

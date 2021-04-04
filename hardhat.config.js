@@ -8,6 +8,8 @@ require('./tasks/deployUpfireToken');
 require('./tasks/deployUpfireSwap');
 require('dotenv').config();
 
+const ethers = require('ethers');
+
 const config = {
   contractSizer: {
     alphaSort: true,
@@ -29,6 +31,7 @@ const config = {
       throwOnCallFailures: true,
       allowUnlimitedContractSize: true,
       blockGasLimit: 0x1fffffffffffff,
+      gasPrice: parseInt(ethers.utils.parseUnits('271', 'gwei')),
     },
   }
 };
@@ -36,7 +39,7 @@ const config = {
 if (process.env.RPC_URL && process.env.PRIVATE_KEY) {
   config.networks.mainnet = {
     accounts: [`0x${process.env.PRIVATE_KEY}`],
-    url: `https://mainnet.infura.io/v3/${process.env.RPC_URL}`,
+    url: process.env.RPC_URL,
   };
 }
 

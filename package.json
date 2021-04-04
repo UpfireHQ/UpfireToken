@@ -23,6 +23,7 @@
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^2.1.1",
     "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/test-helpers": "^0.5.10",
     "chai": "^4.3.4",
     "dotenv": "^8.2.0",
     "ethers": "^5.0.32",
